@@ -1,0 +1,10 @@
+#!/bin/bash
+if [[ ($# -ne 1 && $# -ne 2) ]]; then
+  echo "Usage: fcat [path] <filename patther>"
+fi
+
+if [ "$#" -eq 1 ]; then
+  find . -name "$1" -exec cat {} \;
+else
+   find "$1" -name "$2" -exec cat {} \;
+fi
