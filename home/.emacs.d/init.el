@@ -1,5 +1,4 @@
 (require 'package)
-(require 'color-theme)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 (when (< emacs-major-version 24)
@@ -32,5 +31,6 @@
          c-basic-offset 4))
 (add-hook 'c-mode-common-hook 'my-c-mode-hook)
 
+(require 'color-theme)
 (color-theme-initialize)
 (color-theme-euphoria)
