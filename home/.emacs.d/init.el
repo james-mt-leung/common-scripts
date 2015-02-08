@@ -1,3 +1,11 @@
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize) ;; You might already have this line
+
 ;;; turn on syntax highlighting
 (global-font-lock-mode 1)
 
@@ -12,13 +20,14 @@
              (require 'groovy-electric)
              (groovy-electric-mode)))
 
-(add-to-list 'load-path "~/.emacs.d/")
+(setq make-backup-files nil) ; stop creating those backup~ files
+(setq auto-save-default nil) ; stop creating those #autosave# files
 
-(defun my-c-mode-hook () 
-   (setq indent-tabs-mode nil 
-         c-basic-offset 4)) 
-(add-hook 'c-mode-common-hook 'my-c-mode-hook) 
-
-(setq backup-inhibited t)
 (iswitchb-mode 1)
-(setq iswitchb-buffer-ignore '("^ " "*Buffer"))
+
+;;; (global-set-key (kbd "C-m") 'set-mark-command)
+(defun my-c-mode-hook ()
+   (setq indent-tabs-mode nil
+         c-basic-offset 4))
+(add-hook 'c-mode-common-hook 'my-c-mode-hook)
+
