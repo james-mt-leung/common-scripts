@@ -34,3 +34,6 @@
 (require 'color-theme)
 (color-theme-initialize)
 (color-theme-euphoria)
+
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
